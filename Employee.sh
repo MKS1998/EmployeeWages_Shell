@@ -1,13 +1,13 @@
 #!/bin/bash -x
 
-isFullTime=1
 randomCheck=$((RANDOM%2))
 
-if [ $randomCheck -eq $isFullTime ]
+if [ $randomCheck -eq 1 ]
 then
 	empRatePerHour=20;
 	empHrs=8;
 	salary=$(($empHrs*$empRatePerHour));
+        echo "Employee Daily Wages : " $salary
 else
-	salary=0;
+	echo "Employee is absent"
 fi
