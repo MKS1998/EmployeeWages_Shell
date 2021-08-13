@@ -1,23 +1,10 @@
 #!/bin/bash -x
 
-isFullTime=1
-isPartTime=2
 empRatePerHour=20
+totalWorkingdays=20
+empHrs=8;
 
-randomCheck=$((RANDOM%3))
+	totalHours=$empHrs*$totalWorkingdays;
+	salary=$(($totalHours*$empRatePerHour));
+	echo "Employee Monthly wages : " $salary
 
-case $randomCheck in
-	$isFullTime)
-		empHrs=8;
-		salary=$(($empHrs*$empRatePerHour));
-		echo "Employee FullTime wages : " $salary
-		;;
-	$isPartTime)
-        	empHrs=4;
-		salary=$(($empHrs*$empRatePerHour));
-		echo "Employee PartTime wages : " $salary
-		;;
-	*)
-		echo "Employee is absent"	
-		;;
-esac
