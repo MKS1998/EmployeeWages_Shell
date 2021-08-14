@@ -25,10 +25,19 @@ function getworkingHr(){
         echo $empHr
 }
 
+function getEmpWage(){
+	empHr=$empcheck
+	echo $(( $empHr * $EMP_RATE_PER_HR ))
+}
+
+
 while [ $totalworkingday -le $MAX_WORKING_DAYS ] && [ $totalWorkingHr -lt $MAX_WORK_HR ]
 do
 	((totalworkingday++))
 	empcheck=$((RANDOM%3))
 	totalworkingHr=$(( $totalworkingHr + $empHr ))
 	echo "Total Working Hours: " $totalWorkingHr
+	dailywage[$totalworkingHr]=$(getEmpWage)
 done
+
+echo    "Daaily Wage"${dailywage[@]}
