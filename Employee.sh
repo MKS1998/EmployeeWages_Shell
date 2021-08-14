@@ -4,16 +4,14 @@ IS_PRESENT_FULL_TIME=1
 IS_PRESENT_HALF_TIME=2
 EMP_RATE_PER_HR=20
 MAX_WORKING_DAYS=20
-MAX_WORK_HR=100
+MAX_WORK_HR=0
 totalWorkingHr=0
-day=1
+totalworkingday=0
 totalsalary=0
-while [ $day -le $MAX_WORKING_DAYS ] && [ $totalWorkingHr -lt $MAX_WORK_HR ]
-do
-        ((day++))
-	empCheck=$((RANDOM%3))
 
-        case  $empCheck  in
+function getworkingHr(){
+
+        case  $empcheck  in
                 $IS_PRESENT_FULL_TIME)
                      empHr=8 
 			;;
@@ -24,9 +22,13 @@ do
                        empHr=0 
 			;;
         esac
-        totalWorkingHr=$(( $totalWorkingHr + $empHr ))
-	echo "totalWorkingHr: "$totalWorkingHr
-done
+        echo $empHr
+}
 
-totalSalary=$(( $totalWorkingHr * $EMP_RATE_PER_HR ))
-echo "total Wages: " $totalSalary
+while [ $totalworkingday -le $MAX_WORKING_DAYS ] && [ $totalWorkingHr -lt $MAX_WORK_HR ]
+do
+	((totalworkingday++))
+	empcheck=$((RANDOM%3))
+	totalworkingHr=$(( $totalworkingHr + $empHr ))
+	echo "Total Working Hours: " $totalWorkingHr
+done
